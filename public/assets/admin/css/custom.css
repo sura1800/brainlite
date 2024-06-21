@@ -1,0 +1,74 @@
+.badge-custom {
+    font-weight: 400;
+    font-size: 13px;
+}
+
+.user-profile-img {
+    width: 70px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-left: 20px;
+}
+
+.table-img {
+    max-width: 55px;
+}
+
+.edit_img_box {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+}
+
+.edit_img_box img {
+    width: 100px;
+}
+
+.edit_img_box .btn_img_delete {
+    height: 32px;
+}
+
+.custom_admin_sidebar > li {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+        rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+/* Boostarap Tags Input */
+.bootstrap-tagsinput {
+    margin: 0;
+    width: 100%;
+    padding: 0.3rem 0.5rem 0;
+    font-size: 1rem;
+    line-height: 1.25;
+    transition: border-color 0.15s ease-in-out;
+}
+
+.bootstrap-tagsinput > input {
+    width: 100%;
+    margin-bottom: 0.5em;
+    background: no-repeat bottom 50% calc(100% -1px);
+    background-image: none none;
+    background-size: auto;
+    border: 0;
+    height: 36px;
+    transition: background 0s ease-in-out;
+    padding-left: 0;
+    padding-right: 0;
+    border-radius: 0;
+    font-size: 14px;
+}
+
+.bootstrap-tagsinput > .label-info {
+    display: inline-block;
+    background-color: lightgrey;
+    padding: 0 0.4em 0.15em;
+    border-radius: 0.2rem;
+    margin-bottom: 0.4rem;
+    color: #fff;
+    font-weight: 400;
+}
+
+.shadow-custom-1{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
