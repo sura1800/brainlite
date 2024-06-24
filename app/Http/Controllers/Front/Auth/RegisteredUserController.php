@@ -43,13 +43,13 @@ class RegisteredUserController extends Controller
             'aadhaar' => ['required', 'string', 'size:12', 'unique:' . Customer::class],
             'phone' => ['required', 'string', 'size:10', 'unique:' . Customer::class],
         ]);
-        
+
         // $verifiedCustomerOtp = PhoneOtp::where(['phone' =>$validated['phone'], 'verified' => 1])->first();
 
         // if (empty($verifiedCustomerOtp)) {
         //     return redirect()->back()->withErrors('Please verify your phone number before register.');
         // }
-        
+
         // $now = now();
         // $otp = generateOtp();
         // $otpExpiry = $now->addMinutes(10);
@@ -71,13 +71,14 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        Auth::guard('front')->login($user);
+        //Auth::guard('front')->login($user);
 
 
         // session(['reg_user_phone' => $validated['phone']]);
-        return redirect(RouteServiceProvider::HOME);
+        //return redirect(RouteServiceProvider::HOME);
         // return redirect()->route('customer.verifyPhone');
-        // return redirect()->route('login');
+         //return redirect()->route('login');
+        return redirect()->route('login')->with('message','Register Successfully.');
     }
 
     public function verifyPhone(Request $request)
@@ -90,7 +91,7 @@ class RegisteredUserController extends Controller
         } else {
             return redirect('login');
         }
-        // dd($userEmail);        
+        // dd($userEmail);
     }
 
     public function verifyPhoneSubmit(Request $request)
@@ -138,12 +139,12 @@ class RegisteredUserController extends Controller
             return redirect('login');
         } elseif ($customer->otp) {
             if ($now->isAfter($customer->otp_expire_at)) {
-                $newOtp = generateOtp();                
+                $newOtp = generateOtp();
                 $otpExpiry = $now->addMinutes(10);
                 $customer->update(['otp' => Crypt::encryptString($newOtp), 'otp_expire_at' => $otpExpiry]);
                 Log::info($newOtp);
                 return redirect()->back()->withSuccess('OTP sent to your phone');
-            } elseif ($now->isBefore($customer->otp_expire_at)) {                      
+            } elseif ($now->isBefore($customer->otp_expire_at)) {
                 $otpExpiry = $now->addMinutes(10);
                 $customer->update(['otp_expire_at' => $otpExpiry]);
                 Log::info(Crypt::decryptString($customer->otp));

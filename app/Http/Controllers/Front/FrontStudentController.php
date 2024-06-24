@@ -41,7 +41,7 @@ class FrontStudentController extends Controller
             $students = $students->where('students.aadhar_no', 'like', $_GET['aadhar_no'].'%');
         }
 
-        $data['students'] = $students->orderBy('student_id','DESC')->get();
+        $data['students'] = $students->orderBy('student_id','DESC')->paginate(10);
         return view('front.student.index',$data);
 
     }
@@ -66,6 +66,5 @@ class FrontStudentController extends Controller
         $file = 'student_'. time().'.csv';
         return Excel::download(new StudentExport($token), $file);
     }
-
 
 }

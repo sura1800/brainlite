@@ -27,7 +27,6 @@
                 <p class="login-box-msg">Sign in to start your session</p>
                 <!-- Session Status -->
                 <x-auth-session-status class="mb-4" :status="session('status')" />
-
                 <form method="POST" action="{{ route('admin.login') }}">
                     @csrf
                     <div class="input-group mb-3">

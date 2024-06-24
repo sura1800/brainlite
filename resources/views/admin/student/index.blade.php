@@ -4,7 +4,7 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-            <div class="col-12">
+                <div class="col-12">
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex justify-content-between">
@@ -69,7 +69,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                        <button type="submit" class="btn btn-lg btn-info mt-4 float-right"> Filter </button>
+                                    <button type="reset" class="btn btn-danger mt-5 float-right mr-2 reset"> Reset </button>
+                                    <button type="submit" class="btn btn-dark mt-5 float-right mr-2"><i class="nav-icon fas fa-search"></i> Filter </button>
                                 </div>
 
                             </div>
@@ -101,14 +102,10 @@
                                 </div>
                         @endif
 
-                            <!-- @php
-                                print_r($_GET);
-                            @endphp -->
-
                             <button type="button" class="btn btn-primary mr-3" data-toggle="modal" data-target="#exampleModal">Upload File <i class="nav-icon fas fa-upload"></i></button>
                             <a href="{{url('admin/student-export/'.json_encode($_GET))}}"><button type="button" class="btn btn-warning">Download File <i class="nav-icon fas fa-download"></i></button></a>
 
-                            <table id="example1" class="table table-bordered table-striped">
+                            <table id="" class="table table-bordered table-striped mt-2">
                                 <thead>
                                     <tr>
                                         <th>Sl No.</th>
@@ -122,9 +119,20 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                @if(count($students) > 0)
+
+                                        @php
+                                            if(isset($_GET['page'])){
+                                                $page_item =  (($_GET['page'] - 1) * 10)+1;
+                                            }
+                                            else{
+                                                $page_item = 1;
+                                            }
+                                        @endphp
+
                                         @foreach($students as $key=>$student)
                                             <tr>
-                                                <td>{{ $key+1 }}</td>
+                                                <td>{{ $page_item }}</td>
                                                 <td>{{ $student->username }}</td>
                                                 <td>{{ $student->student_name }}</td>
                                                 <td>{{ $student->candidate_reg_id }}</td>
@@ -135,9 +143,22 @@
                                                     <a href="{{route('admin.students.show',$student)}}"><button type="button" class="btn btn-success" title="show"><i class="nav-icon fas fa-eye"></i></button></a>
                                                 </td>
                                             </tr>
+
+                                            @php
+                                                $page_item++;
+                                            @endphp
+
                                         @endforeach
+                                    @else
+                                            <tr>
+                                                <th colspan="8" class="text-center">No data found</th>
+                                            </tr>
+                                    @endif
                                 </tbody>
                             </table>
+                            <div class="d-flex mt-2 float-right">
+                                    {{$students->links()}}
+                            </div>
                         </div>
                         <!-- /.card-body -->
                     </div>
@@ -186,5 +207,12 @@
     </div>
   </div>
 </div>
+
+<script>
+
+    $(".reset").click(function(){
+        window.location.href = "{{route('admin.students.index')}}";
+    })
+</script>
 
 @endsection

@@ -50,13 +50,5 @@ class Customer extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    public function docs()
-    {
-        return $this->hasMany(LegalDoc::class, 'aadhaar_no', 'aadhaar');
-    }
 
-    public function ledgers()
-    {
-        return $this->hasMany(LedgerDoc::class, 'aadhaar_no', 'aadhaar');
-    }
 }

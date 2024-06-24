@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use App\Observers\PageObserver;
-
+use Illuminate\Pagination\Paginator;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -27,7 +27,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // dd($_SERVER['HTTP_USER_AGENT']);        
+        Paginator::useBootstrapFour();
+        // dd($_SERVER['HTTP_USER_AGENT']);
 
         // Page::observe(PageObserver::class);
         // $cmsPages = Cache::remember('cmsPages', 60 * 60, function () {

@@ -68,6 +68,66 @@
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a href=" {{ route('admin.users.index') }}"
+                        class="nav-link  @if (Request::is('admin/users')) active @endif">
+                        <i class="nav-icon fas fa-list-alt"></i>
+                        <p>
+                            Users
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href=" {{ route('admin.daily-entries.index') }}"
+                        class="nav-link  @if (Request::is('admin/daily-entries')) active @endif">
+                        <i class="nav-icon fas fa-list-alt"></i>
+                        <p>
+                            daily Entries
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href=" {{ route('admin.batches.index') }}"
+                        class="nav-link  @if (Request::is('admin/batches')) active @endif">
+                        <i class="nav-icon fas fa-list-alt"></i>
+                        <p>
+                            Batch
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href=" {{ route('admin.tc_ids.index') }}"
+                        class="nav-link  @if (Request::is('admin/tc_ids')) active @endif">
+                        <i class="nav-icon fas fa-list-alt"></i>
+                        <p>
+                            TC ID
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href=" {{ route('admin.job-roles.index') }}"
+                        class="nav-link  @if (Request::is('admin/job-roles')) active @endif">
+                        <i class="nav-icon fas fa-list-alt"></i>
+                        <p>
+                            Job Role
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href=" {{ route('admin.sectors.index') }}"
+                        class="nav-link  @if (Request::is('admin/sectors')) active @endif">
+                        <i class="nav-icon fas fa-list-alt"></i>
+                        <p>
+                            Sector
+                        </p>
+                    </a>
+                </li>
+
 
 
             </ul>

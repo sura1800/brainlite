@@ -52,6 +52,19 @@
                         </p>
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a href=" {{ route('daily-entries.index') }}"
+                        class="nav-link  @if (Request::is('daily-entries')) active @endif">
+                        <i class="nav-icon fas fa-list-alt"></i>
+                        <p>
+                        Daily Entries
+                        </p>
+                    </a>
+                </li>
+
+
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
